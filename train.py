@@ -37,7 +37,7 @@ def split_data(data, val_size):
     return data[:split_idx], data[split_idx:]
 
 
-class ShakespeareDataset(Dataset):
+class CorpusDataset(Dataset):
     def __init__(self, data, context=8):
         self.data = data
         self.context = context
@@ -78,11 +78,11 @@ if __name__ == "__main__":
     # Split data into train and validation set
     train_data, val_data = split_data(data, args.val_size)
     train_loader = DataLoader(
-        dataset=ShakespeareDataset(train_data, args.context),
+        dataset=CorpusDataset(train_data, args.context),
         batch_size=args.batch_size,
     )
     val_loader = DataLoader(
-        dataset=ShakespeareDataset(val_data, args.context),
+        dataset=CorpusDataset(val_data, args.context),
         batch_size=args.batch_size,
         shuffle=False,
     )
