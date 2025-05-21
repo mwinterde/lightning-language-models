@@ -22,8 +22,9 @@ class RNN(BaseModule):
 
     def forward(self, x):
         B, T = x.shape
-        a = torch.zeros(B, self.hidden_dim)
-        logits = torch.empty(B, T, self.vocab_size)
+        device = x.device
+        a = torch.zeros(B, self.hidden_dim, device=device)
+        logits = torch.empty(B, T, self.vocab_size, device=device)
         for t in range(T):
             x_t = x[:, t]
             x_t = self.tok_embedding(x_t)

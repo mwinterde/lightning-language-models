@@ -33,7 +33,9 @@ class Transformer(BaseModule):
 
     def forward(self, x):
         B, T = x.shape
-        x = self.tok_embedding(x) + self.pos_embedding(torch.arange(T))
+        device = x.device
+        positions = torch.arange(T, device=device)
+        x = self.tok_embedding(x) + self.pos_embedding(positions)
         x = self.encoders(x)
         logits = self.fc(x)
         return logits
