@@ -1,9 +1,9 @@
 import argparse
 
 import torch
-from lightning.pytorch import Trainer
-from lightning.pytorch.callbacks import EarlyStopping
-from lightning.pytorch.loggers import TensorBoardLogger
+from pytorch_lightning import Trainer
+from pytorch_lightning.callbacks import EarlyStopping
+from pytorch_lightning.loggers import TensorBoardLogger
 from torch.utils.data import DataLoader, Dataset
 
 from models import GRU, LSTM, RNN, Bigram, Transformer
