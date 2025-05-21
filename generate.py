@@ -23,7 +23,8 @@ def generate_text(model, max_len=10000, delay=0.025):
     token_to_idx, idx_to_token = model.tokenizer
 
     # Initialize input
-    input = torch.tensor([token_to_idx["\n"]], dtype=torch.long).view(1, 1)
+    device = next(model.parameters()).device
+    input = torch.tensor([token_to_idx["\n"]], dtype=torch.long, device=device).view(1, 1)
 
     for _ in range(max_len):
         # Generate next token
